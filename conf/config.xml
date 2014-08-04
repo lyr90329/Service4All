@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+
+	<localSMPort>8080</localSMPort>
+	<localSMSuffix>/axis2/services/localSAManagerService/</localSMSuffix>
+	<saManagerUrl>http://192.168.3.204:8192/appengine/ApplianceRegister/</saManagerUrl>
+	<statusCheckerTimeout>10000</statusCheckerTimeout>
+	<pcTimeout>60000</pcTimeout>
+	<registerTime>30000</registerTime>
+	<entryPath>/home/sdp/LocalSAManager/axis2-1.6.2/bin/axis2server.sh</entryPath>
+	<safolder>/home/sdp/LocalSAManager/SAfolder/</safolder>
+	<repositoryPath>/home/sdp/LocalSAManager/WSRepository/</repositoryPath>
+	
+	<tomcat>
+		<tomcatsourcePath>/home/sdp/LocalSAManager/originalFiles/tomcat-7.0.32</tomcatsourcePath>
+		<tomcatsuffix>tomcat-7.0.32</tomcatsuffix>
+	</tomcat>
+	
+	<axis2>
+		<axis2sourcePath>/home/sdp/LocalSAManager/originalFiles/axis2.war</axis2sourcePath>
+	</axis2>
+	
+	<bpmn>
+		<bpmnsourcePath>/home/sdp/LocalSAManager/originalFiles/BPMNEngine.aar</bpmnsourcePath>
+	</bpmn>
+	
+	<nginx>
+		<nginxIP></nginxIP>
+		<nginxPort></nginxPort>
+		<nginxListenPort></nginxListenPort>
+		<batchSize></batchSize>
+	</nginx>
+	
+</configs>

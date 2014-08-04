@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+	<driver>com.mysql.jdbc.Driver</driver>
+	<url>jdbc:mysql://192.168.104.114:3306/cloud_monitor</url>
+	<user>root</user>
+	<password>sdp123</password>
+</database>

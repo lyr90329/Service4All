@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name="deploy" class="cn.edu.buaa.act.service4all.atomicws.deploy.ServiceDeployBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.atomicws.deploy.ServiceDeployReceiver" 
+					  service="ServiceDeployService" 
+					  endpoint="ServiceDeployEndpoint"
+					  interface="ServiceDeployInterface" 
+					  serviceUnit="ServiceDeployUnit"/>
+			<invokers>
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.deploy.AvailableServerQueryInvoker" 
+						 service="AvailableContainerQueryService" 
+						 endpoint="AvailableContainerQueryEndpoint" 
+						 operation="AvailableContainerQueryInvoker" 
+						 interface="AvailableContainerQueryInterface"
+						 serviceUnit="AvailableContainerQueryUnit">
+					<target service="Axis2QueryForDeploymentService" 
+						 endpoint="Axis2QueryForDeploymentEndpoint" 
+						 operation="Axis2QueryForDeploymentInvoker" 
+						 interface="Axis2QueryForDeploymentInterface"
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+						
+				</invoker>
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.deploy.DeploymentFeedbackInvoker" 
+						interface="DeploymentResponseInterface" 
+						endpoint="DeploymentResponseEndpoint" 
+						operation="DeploymentResponseInvoker"
+						service="DeploymentResponse"
+						serviceUnit="DeploymentResponseUnit">
+					<target service="WSDeploymentFeedbackService" 
+						 endpoint="WSDeploymentFeedbackEndpoint" 
+						 operation="WSDeploymentFeedbackInvoker" 
+						 interface="WSDeploymentFeedbackInterface"
+						 uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+				
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.deploy.DeployUpdateInvoker" 
+						interface="DeployUpdateInterface" 
+						endpoint="DeployUpdateEndpoint" 
+						operation="DeployUpdateInvoker"
+						service="DeployUpdate"
+						serviceUnit="DeployUpdateUnit">
+					<target service="WSDeployUpdateService" 
+						 endpoint="WSDeployUpdateEndpoint" 
+						 operation="WSDeployUpdateInvoker" 
+						 interface="WSDeployUpdateInterface"
+						 uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+		</unit>
+		<unit name="undeploy" class="cn.edu.buaa.act.service4all.atomicws.deploy.ServiceUndeployBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud">
+			<receiver class="cn.edu.buaa.act.service4all.atomicws.deploy.ServiceUndeployReceiver" 
+					  service="ServiceUndeployService" 
+					  endpoint="ServiceUndeployEndpoint"
+					  interface="ServiceUndeployInterface" 
+					  serviceUnit="ServiceUndeployUnit"/>
+			<invokers>
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.deploy.ReplicaQueryForUndeployInvoker" 
+						 service="ReplicaQueryForUndeployService" 
+						 endpoint="ReplicaQueryForUndeployEndpoint" 
+						 operation="ReplicaQueryForUndeployInvoker" 
+						 interface="ReplicaQueryForUndeployInterface"
+						 serviceUnit="ReplicaQueryForUndeployUnit">
+					<target service="WSQueryForUndeploymentService" 
+						 endpoint="WSQueryForUndeploymentEndpoint" 
+						 operation="WSQueryForUndeploymentInvoker" 
+						 interface="WSQueryForUndeploymentInterface"
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+						
+				</invoker>
+				
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.deploy.UndeployFeedbackInvoker" 
+						interface="UndeployResponseInterface" 
+						endpoint="UndeployResponseEndpoint" 
+						operation="UndeployResponseInvoker"
+						service="UndeployResponse"
+						serviceUnit="UndeployResponseUnit">
+					<target service="WSUndeploymentFeedbackService" 
+						 endpoint="WSUndeploymentFeedbackEndpoint" 
+						 operation="WSUndeploymentFeedbackInvoker" 
+						 interface="WSUndeploymentFeedbackInterface"
+						 uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+				
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.deploy.UndeployUpdateInvoker" 
+						interface="UndeployUpdateInterface" 
+						endpoint="UndeployUpdateEndpoint" 
+						operation="UndeployUpdateInvoker"
+						service="UndeployUpdate"
+						serviceUnit="UndeployUpdateUnit">
+					<target service="WSDeployUpdateService" 
+						 endpoint="WSDeployUpdateEndpoint" 
+						 operation="WSDeployUpdateInvoker" 
+						 interface="WSDeployUpdateInterface"
+						 uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+			</unit>
+
+	</units>
+</appengine>

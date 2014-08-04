@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name="WebServiceQuery" class="cn.edu.buaa.act.service4all.atomicws.servicequery.availableservices.AvailableServicesBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.atomicws.servicequery.availableservices.AvailableServicesQueryReceiver" 
+					  service="ServicesQueryService" 
+					  endpoint="ServicesQueryEndpoint"
+					  interface="ServicesQueryInterface" 
+					  serviceUnit="ServicesQueryUnit"/>
+			<invokers>
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.servicequery.availableservices.UpdateQueryStateInvoker" 
+						 service="UpdateQueryStateService" 
+						 endpoint="UpdateQueryStateEndpoint" 
+						 operation="UpdateQueryStateInvoker" 
+						 interface="UpdateQueryStateInterface"
+						 serviceUnit="UpdateQueryStateUnit">
+					<target service="ServiceDeployService" 
+					  endpoint="ServiceDeployEndpoint"
+					  interface="ServiceDeployInterface" 
+					  serviceUnit="ServiceDeployUnit"
+						uri="http://sdp.act.buaa.edu.cn/servicecloud"/>						
+				</invoker>
+			</invokers>
+		</unit>
+		
+		<unit name="WSDeployUpdate" class="cn.edu.buaa.act.service4all.atomicws.servicequery.update.WSDeployUpdateBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.atomicws.servicequery.update.WSDeployUpdateReceiver" 
+					  service="WSDeployUpdateService" 
+					  endpoint="WSDeployUpdateEndpoint"
+					  interface="WSDeployUpdateInterface" 
+					  serviceUnit="WSDeployUpdateUnit"/>
+		</unit>
+
+	</units>
+</appengine>

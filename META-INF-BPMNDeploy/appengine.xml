@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name="BPMNDeployment" 
+				class="cn.edu.buaa.act.service4all.bpmndeployment.endpoints.BPMNDeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmndeployment.endpoints.BPMNDeploymentReceiver" 
+					  service="BPMNDeploymentService" 
+					  endpoint="BPMNDeploymentEndpoint"
+					  interface="BPMNDeploymentInterface" 
+					  serviceUnit="BPMNDeploymentServiceUnit"/>
+		</unit>
+		
+		<unit name="BPMNUndeployment" 
+				class="cn.edu.buaa.act.service4all.bpmndeployment.endpoints.BPMNUndeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmndeployment.endpoints.BPMNUndeploymentReceiver" 
+					  service="BPMNUndeploymentService" 
+					  endpoint="BPMNUndeploymentEndpoint"
+					  interface="BPMNUndeploymentInterface" 
+					  serviceUnit="BPMNUndeploymentServiceUnit"/>
+		</unit>
+		
+		<unit name="BPMNDocQuery" 
+				class="cn.edu.buaa.act.service4all.bpmndeployment.endpoints.BPMNDocQueryBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmndeployment.endpoints.BPMNDocQueryReceiver" 
+					  service="BPMNDocQueryService" 
+					  endpoint="BPMNDocQueryEndpoint"
+					  interface="BPMNDocQueryInterface" 
+					  serviceUnit="BPMNDocQueryUnit"/>
+		</unit>
+	</units>
+</appengine>

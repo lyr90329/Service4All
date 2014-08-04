@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name="BPMNResult" 
+				class="cn.edu.buaa.act.service4all.bpmnmonitor.endpoints.BPMNResultBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmnmonitor.endpoints.BPMNResultReceiver" 
+					  service="BPMNResultService" 
+					  endpoint="BPMNResultEndpoint"
+					  interface="BPMNResultInterface" 
+					  serviceUnit="BPMNResultServiceUnit"/>
+		</unit>
+		
+		<unit name="BPMNJobQuery" 
+				class="cn.edu.buaa.act.service4all.bpmnmonitor.endpoints.BPMNJobQueryBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmnmonitor.endpoints.BPMNJobQueryReceiver" 
+					  service="BPMNJobQueryService" 
+					  endpoint="BPMNJobQueryEndpoint"
+					  interface="BPMNJobQueryInterface" 
+					  serviceUnit="BPMNJobQueryServiceUnit"/>
+		</unit>
+		
+		<unit name="BPMNMonitorInfo" 
+				class="cn.edu.buaa.act.service4all.bpmnmonitor.endpoints.BPMNMonitorInfoBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmnmonitor.endpoints.BPMNMonitorInfoReceiver" 
+					  service="BPMNMonitorInfoService" 
+					  endpoint="BPMNMonitorInfoEndpoint"
+					  interface="BPMNMonitorInfoInterface" 
+					  serviceUnit="BPMNMonitorInfoServiceUnit"/>
+		</unit>
+		
+		
+	</units>
+</appengine>

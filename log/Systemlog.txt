@@ -1,0 +1,61 @@
+2012-07-02 22:56:11,700  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - localSMPort 8080
+2012-07-02 22:56:11,702  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - localSMSuffix /axis2/services/localSAManagerService/
+2012-07-02 22:56:11,703  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - saManagerUrl http://192.168.3.206:8192/appengine/ApplianceRegister/
+2012-07-02 22:56:11,704  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - statusCheckerTimeout 10000
+2012-07-02 22:56:11,705  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - pcTimeout 60000
+2012-07-02 22:56:11,705  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - registerTime 30000
+2012-07-02 22:56:11,706  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - entryPath C:\SAManageTool\axis2-1.5.1\\bin\axis2server.bat
+2012-07-02 22:56:11,706  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - safolder C:\SAManageTool\SAfolder\
+2012-07-02 22:56:11,707  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - repositoryPath C:\SAManageTool\WSRepository\
+2012-07-02 22:56:11,708  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - tomcatsourcePath C:\SAManageTool\originalFiles\apache-tomcat-6.0.14
+2012-07-02 22:56:11,708  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - tomcatsuffix apache-tomcat-6.0.14
+2012-07-02 22:56:11,709  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - axis2sourcePath C:\SAManageTool\originalFiles\axis2.war
+2012-07-02 22:56:13,327  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 2.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1512924
+2012-07-02 22:56:13,331  [Thread-3] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host Timer timestamp] 60000
+2012-07-02 22:56:14,612  [Timer-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 1.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1508088
+2012-07-02 22:56:14,617  [Timer-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - The register request:<hostRegister ip="http://192.168.3.219" wsepr="http://192.168.3.219:8080/axis2/services/localSAManagerService/" deployOp="saDeploy" undeployOp="saUnDeploy" restartOp="restart" stopOp="Have not StopOp" cpu="1.0" memory="1508088.0" throughput="300"><appliances /></hostRegister>
+2012-10-30 15:53:53,787  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - localSMPort 8080
+2012-10-30 15:53:53,800  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - localSMSuffix /axis2/services/localSAManagerService/
+2012-10-30 15:53:53,801  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - saManagerUrl http://192.168.3.206:8192/appengine/ApplianceRegister/
+2012-10-30 15:53:53,802  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - statusCheckerTimeout 10000
+2012-10-30 15:53:53,803  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - pcTimeout 60000
+2012-10-30 15:53:53,803  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - registerTime 30000
+2012-10-30 15:53:53,804  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - entryPath C:\localSAManager\axis2-1.5.1\\bin\axis2server.bat
+2012-10-30 15:53:53,812  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - safolder C:\localSAManager\SAfolder\
+2012-10-30 15:53:53,813  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - repositoryPath C:\localSAManager\WSRepository\
+2012-10-30 15:53:53,814  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - tomcatsourcePath C:\localSAManager\originalFiles\apache-tomcat-6.0.14
+2012-10-30 15:53:53,814  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - tomcatsuffix apache-tomcat-6.0.14
+2012-10-30 15:53:53,815  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - axis2sourcePath C:\localSAManager\originalFiles\axis2.war
+2012-10-30 15:53:58,673  [HttpConnection-8080-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 5.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1023956
+2012-10-30 15:53:58,726  [Thread-3] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host Timer timestamp] 60000
+2012-10-30 15:54:00,201  [Timer-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 10.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1019528
+2012-10-30 15:54:00,204  [Timer-2] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - The register request:<hostRegister ip="http://192.168.3.209" wsepr="http://192.168.3.209:8080/axis2/services/localSAManagerService/" deployOp="saDeploy" undeployOp="saUnDeploy" restartOp="restart" stopOp="Have not StopOp" cpu="10.0" memory="1019528.0" throughput="300"><appliances /></hostRegister>
+2014-07-17 19:37:17,273  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - localSMPort 8080
+2014-07-17 19:37:17,307  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - localSMSuffix /axis2/services/localSAManagerService/
+2014-07-17 19:37:17,308  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - saManagerUrl http://192.168.3.204:8192/appengine/ApplianceRegister/
+2014-07-17 19:37:17,308  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - statusCheckerTimeout 10000
+2014-07-17 19:37:17,308  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - pcTimeout 60000
+2014-07-17 19:37:17,309  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - registerTime 30000
+2014-07-17 19:37:17,309  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - entryPath /home/sdp/LocalSAManager/axis2-1.6.2/bin/axis2server.sh
+2014-07-17 19:37:17,310  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - safolder /home/sdp/LocalSAManager/SAfolder/
+2014-07-17 19:37:17,310  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - repositoryPath /home/sdp/LocalSAManager/WSRepository/
+2014-07-17 19:37:17,310  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - tomcatsourcePath /home/sdp/LocalSAManager/originalFiles/tomcat-7.0.32
+2014-07-17 19:37:17,311  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - tomcatsuffix tomcat-7.0.32
+2014-07-17 19:37:17,311  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - axis2sourcePath /home/sdp/LocalSAManager/originalFiles/axis2.war
+2014-07-17 19:37:17,312  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.config.Config  - bpmnsourcePath /home/sdp/LocalSAManager/originalFiles/BPMNEngine.aar
+2014-07-17 19:37:18,746  [main] ERROR cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - empty String
+2014-07-17 19:37:18,747  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - Set the cpu ratio to 0.
+2014-07-17 19:37:18,796  [main] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 0.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1117928
+2014-07-17 19:37:18,798  [Thread-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host Timer timestamp] 60000
+2014-07-17 19:37:18,989  [Timer-0] ERROR cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - empty String
+2014-07-17 19:37:18,989  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - Set the cpu ratio to 0.
+2014-07-17 19:37:18,989  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 0.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1114732
+2014-07-17 19:37:19,079  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - The register request:<hostRegister ip="" wsepr=":8080/axis2/services/localSAManagerService/" deployOp="saDeploy" undeployOp="saUnDeploy" restartOp="restart" stopOp="Have not StopOp" cpu="0.0" memory="1114732.0" throughput="300"><appliances></appliances></hostRegister>
+2014-07-17 19:37:48,972  [Timer-0] ERROR cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - empty String
+2014-07-17 19:37:48,972  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - Set the cpu ratio to 0.
+2014-07-17 19:37:48,973  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 0.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1102928
+2014-07-17 19:37:48,973  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - The register request:<hostRegister ip="" wsepr=":8080/axis2/services/localSAManagerService/" deployOp="saDeploy" undeployOp="saUnDeploy" restartOp="restart" stopOp="Have not StopOp" cpu="0.0" memory="1102928.0" throughput="300"><appliances></appliances></hostRegister>
+2014-07-17 19:38:18,979  [Timer-0] ERROR cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - empty String
+2014-07-17 19:38:18,980  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.monitoringinfo.MonitorServiceImpl  - Set the cpu ratio to 0.
+2014-07-17 19:38:18,980  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - [System Information][Host PC Information]OS Name: Windows Vista	CPU Ratio: 0.0%	Total Physical Memory(kb): 2097151	Free Physical Memory(kb):1101444
+2014-07-17 19:38:18,980  [Timer-0] INFO  cn.edu.buaa.act.service4all.core.localsamanager.timer.PCTimer  - The register request:<hostRegister ip="" wsepr=":8080/axis2/services/localSAManagerService/" deployOp="saDeploy" undeployOp="saUnDeploy" restartOp="restart" stopOp="Have not StopOp" cpu="0.0" memory="1101444.0" throughput="300"><appliances></appliances></hostRegister>

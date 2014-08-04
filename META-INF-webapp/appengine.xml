@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name = "webAppDeploy" class = "cn.edu.buaa.act.service4all.webapp.deployment.WebAppDeploymentBussinessUnit" targetNamespace = "http://sdp.act.buaa.edu.cn/servicecloud">
+			<receiver class="cn.edu.buaa.act.service4all.webapp.deployment.WebAppDeploymentReceiver"
+					  service="WebAppDeployService"
+					  endpoint="WebAppDeployEndpoint"
+					  interface="WebAppDeployInterface"
+					  ServiceUnit="WebAppDeployServiceUnit"/>
+			<invokers>
+				<invoker name = "WebAppDeployFbInvoker" class = "cn.edu.buaa.act.service4all.webapp.deployment.WebAppDeployFeedbackInvoker"
+						 service = "WebAppDeployFeedbackInvokerService"
+						 endpoint = "WebAppDeployFeedbackInvokerEndpoint"
+						 operation = "WebAppDeployFeedbackInvoker"
+						 interface = "WebAppDeployFeedbackInvokerInterface"
+						 ServiceUnit = "WebAppDeployFeedbackInvokerServiceUnit">
+				 		<target service = "WebAppDeploymentFeedbackService"
+				 				endpoint = "WebAppDeploymentFeedbackEndpoint"
+				 				interface = "WebAppDeploymentFeedbackInterface"
+				 				operation = "WebAppDeploymentFeedback"
+				 				uri = "http://sdp.act.buaa.edu.cn/servicecloud"/>
+				 </invoker>
+				<invoker name = "WebAppServerQueryInvoker" class = "cn.edu.buaa.act.service4all.webapp.deployment.WebAppServerQueryInvoker"
+						 service = "WebAppServerQueryInvokerService"
+						 endpoint = "WebAppServerQueryInvokerEndpoint"
+						 operation = "WebAppServerQueryInvoker"
+						 interface = "WebAppServerQueryInvokerInterface"
+						 ServiceUnit = "WebAppServerQueryInvokerServiceUnit">
+				 		<target service = "AppServerQueryForDeploymentService"
+				 				endpoint = "AppServerQueryForDeploymentEndpoint"
+				 				interface = "AppServerQueryForDeploymentInterface"
+				 				operation = "AppServerQueryForDeployment"
+				 				uri = "http://sdp.act.buaa.edu.cn/servicecloud"/>
+				 </invoker>
+			</invokers>
+		</unit>
+		<unit class = "cn.edu.buaa.act.service4all.webapp.undeployment.WebAppUndeploymentBussinessUnit" targetNamespace = "http://sdp.act.buaa.edu.cn/servicecloud">
+			<receiver class = "cn.edu.buaa.act.service4all.webapp.undeployment.WebAppUndeploymentReceiver"
+					  service = "WebAppUndeployService"
+					  endpoint = "WebAppUndeployEndpoint"
+					  interface = "WebAppUndeployInterface"
+					  ServiceUnit = "WebAppUndeployServiceUnit"/>
+			<invokers>
+				<invoker name = "WebAppQueryInvoker" class = "cn.edu.buaa.act.service4all.webapp.undeployment.WebAppQueryInvoker"
+						 service = "WebAppQueryInvokerService"
+						 endpoint = "WebAppQueryInvokerEndpoint"
+						 operation = "WebAppQueryInvoker"
+						 interface = "WebAppQueryInvokerInterface"
+						 ServiceUnit = "WebAppQueryInvokerServiceUnit">
+				 		<target service = "WebAppQueryForUndeploymentService"
+				 				endpoint = "WebAppQueryForUndeploymentEndpoint"
+				 				interface = "WebAppQueryForUndeploymentInterface"
+				 				operation = "WebAppQueryForUndeployment"
+				 				uri = "http://sdp.act.buaa.edu.cn/servicecloud"/>
+				 </invoker>
+				<invoker name = "WebAppUndeployFeedbackInvoker" class = "cn.edu.buaa.act.service4all.webapp.undeployment.WebAppUndeployFeedbackInvoker"
+						 service = "WebAppUndeployFeedbackInvokerService"
+						 endpoint = "WebAppUndeployFeedbackInvokerEndpoint"
+						 operation = "WebAppUndeployFeedbackInvoker"
+						 interface = "WebAppUndeployFeedbackInvokerInterface"
+						 ServiceUnit = "WebAppUndeployFeedbackInvokerServiceUnit">
+				 		<target service = "WebAppUndeploymentFeedbackService"
+				 				endpoint = "WebAppUndeploymentFeedbackEndpoint"
+				 				interface = "WebAppUndeploymentFeedbackInterface"
+				 				operation = "WebAppUndeploymentFeedback"
+				 				uri = "http://sdp.act.buaa.edu.cn/servicecloud"/>
+				 </invoker>
+			</invokers>
+		</unit>
+		<unit class = "cn.edu.buaa.act.service4all.webapp.query.WebAppQueryBusinessUnit" targetNamespace = "http://sdp.act.buaa.edu.cn/servicecloud">
+			<receiver class = "cn.edu.buaa.act.service4all.webapp.query.WebAppQueryReceiver"
+					  service = "WebAppQueryService"
+					  endpoint = "WebAppQueryEndpoint"
+					  interface = "WebAppQueryInterface"
+					  ServiceUnit = "WebAppQueryServiceUnit"/>
+			
+		</unit>
+		<unit class = "cn.edu.buaa.act.service4all.webapp.scale.WebAppManualScaleOutBussinessUnit" targetNamespace = "http://sdp.act.buaa.edu.cn/servicecloud">
+			<receiver class = "cn.edu.buaa.act.service4all.webapp.scale.WebAppManualScaleOutReceiver"
+					  service = "WebAppManualScaleOutService"
+					  endpoint = "WebAppManualScaleOutEndpoint"
+					  interface = "WebAppManualScaleOutInterface"
+					  ServiceUnit = "WebAppManualScaleOutServiceUnit"/>
+			<invokers>
+				<invoker name = "WebAppManualScaleOutServerQueryInvoker" class = "cn.edu.buaa.act.service4all.webapp.scale.WebAppManualScaleOutServerQueryInvoker"
+						 service = "WebAppManualScaleOutServerQueryInvokerService"
+						 endpoint = "WebAppManualScaleOutServerQueryInvokerEndpoint"
+						 operation = "WebAppManualScaleOutServerQueryInvoker"
+						 interface = "WebAppManualScaleOutServerQueryInvokerInterface"
+						 ServiceUnit = "WebAppManualScaleOutServerQueryInvokerServiceUnit">
+				 		<target service = "AppServerQueryForDeploymentService"
+				 				endpoint = "AppServerQueryForDeploymentEndpoint"
+				 				interface = "AppServerQueryForDeploymentInterface"
+				 				operation = "AppServerQueryForDeployment"
+				 				uri = "http://sdp.act.buaa.edu.cn/servicecloud"/>
+				 </invoker>
+				 <invoker name = "WebAppManualScaleOutFeedbackInvoker" class = "cn.edu.buaa.act.service4all.webapp.scale.WebAppManualScaleOutFeedbackInvoker"
+						 service = "WebAppManualScaleOutFeedbackInvokerService"
+						 endpoint = "WebAppManualScaleOutFeedbackInvokerEndpoint"
+						 operation = "WebAppManualScaleOutFeedbackInvoker"
+						 interface = "WebAppManualScaleOutFeedbackInvokerInterface"
+						 ServiceUnit = "WebAppManualScaleOutFeedbackInvokerServiceUnit">
+				 		<target service = "WebAppDeploymentFeedbackService"
+				 				endpoint = "WebAppDeploymentFeedbackEndpoint"
+				 				interface = "WebAppDeploymentFeedbackInterface"
+				 				operation = "WebAppDeploymentFeedback"
+				 				uri = "http://sdp.act.buaa.edu.cn/servicecloud"/>
+				 </invoker>
+			</invokers>
+		</unit>
+	</units>
+</appengine>

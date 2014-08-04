@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name="invoke" class="cn.edu.buaa.act.service4all.atomicws.wsinvoker.WSInvokerBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.atomicws.wsinvoker.WSInvokerReceiver" 
+					  service="WebServiceInvokeService" 
+					  endpoint="WebServiceInvokeEndpoint"
+					  interface="WebServiceInvokeInterface" 
+					  serviceUnit="WebServiceInvokeServiceUnit"/>
+			<invokers>
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.wsinvoker.AvailableAppQueryInvoker" 
+						 service="AvailableAppQueryInvokerService" 
+						 endpoint="AvailableAppQueryInvokerEndpoint" 
+						 operation="AvailableAppQueryInvoker" 
+						 interface="AvailableAppQueryInvokerInterface"
+						 serviceUnit="AvailableAppQueryInvokerServiceUnit">
+					<target service="WSQueryForExecutionService" 
+							interface="WSQueryForExecutionInterface" 
+							endpoint="WSQueryForExecutionEndpoint" 
+							operation="WSQueryForExecution" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.wsinvoker.InvocationFeedbackInvoker" 
+						 service="InvocationFeedbackInvokerService" 
+						 endpoint="InvokationFeedbackInvokerEndpoint" 
+						 operation="InvocationFeedbackInvoker" 
+						 interface="InvocationFeedbackInvokerInterface"
+						 serviceUnit="InvocationFeedbackInvokerServiceUnit">
+					<target service="WSExecutionFeedbackService" 
+							interface="WSExecutionFeedbackInterface" 
+							endpoint="WSExecutionFeedbackEndpoint" 
+							operation="WSExecutionFeedback" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+		</unit>
+	</units>
+</appengine>

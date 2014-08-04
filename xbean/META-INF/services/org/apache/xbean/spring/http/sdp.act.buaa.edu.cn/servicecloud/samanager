@@ -1,0 +1,4 @@
+#beans
+endpoint = org.enqu.endpoint.TestProviderEndpoint
+
+

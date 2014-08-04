@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><aspectj>  
+     <aspects>  
+         <aspect name="cn.org.act.sdp.testservice.fileIsolation"/>  
+     </aspects>  
+     <weaver options="-showWeaveInfo -XmessageHandlerClass:org.springframework.aop.aspectj.AspectJWeaverMessageHandler">   
+         <include within="cn.org.act.sdp.testservice.CaculatePrice"/>  
+     </weaver>  
+</aspectj>

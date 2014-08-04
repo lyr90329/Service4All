@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Manifest-Version: 1.0
+Rsrc-Class-Path: ./ axis2-corba-1.5.2.jar axis2-jaxws-1.5.2.jar common
+ s-io-1.4.jar axis2-saaj-1.5.2.jar geronimo-ws-metadata_2.0_spec-1.1.2
+ .jar jaxb-xjc-2.1.7.jar activation-1.1.jar jalopy-1.5rc3.jar juli-6.0
+ .16.jar commons-httpclient-3.1.jar httpcore-4.0.jar sunmscapi.jar axi
+ om-impl-1.2.9.jar geronimo-jta_1.1_spec-1.1.jar axiom-api-1.2.9.jar c
+ ommons-logging-1.1.1.jar woden-impl-dom-1.0M8.jar axis2-soapmonitor-s
+ ervlet-1.5.2.jar tribes-6.0.16.jar axis2-ant-plugin-1.5.2.jar jaxb-im
+ pl-2.1.7.jar axis2-transport-http-1.5.2.jar xercesImpl-2.8.1.jar xml-
+ resolver-1.2.jar axis2-adb-codegen-1.5.2.jar XmlSchema-1.4.3.jar axis
+ 2-transport-local-1.5.2.jar jibx-bind-1.2.1.jar geronimo-stax-api_1.0
+ _spec-1.0.1.jar geronimo-saaj_1.3_spec-1.0.1.jar xalan-2.7.0.jar axis
+ 2-jibx-1.5.2.jar mail-1.4.jar axis2-metadata-1.5.2.jar axis2-json-1.5
+ .2.jar axis2-fastinfoset-1.5.2.jar axiom-dom-1.2.9.jar commons-fileup
+ load-1.2.jar axis2-adb-1.5.2.jar dom4j-1.6.1.jar wsdl4j-1.6.2.jar ger
+ onimo-annotation_1.0_spec-1.1.jar axis2-codegen-1.5.2.jar sunpkcs11.j
+ ar xmlbeans-2.3.0.jar axis2-jaxbri-1.5.2.jar geronimo-jaxws_2.1_spec-
+ 1.0.jar jibx-run-1.2.1.jar commons-codec-1.3.jar axis2-mtompolicy-1.5
+ .2.jar axis2-spring-1.5.2.jar axis2-xmlbeans-1.5.2.jar antlr-2.7.7.ja
+ r bcel-5.1.jar woden-api-1.0M8.jar jaxb-api-2.1.jar log4j-1.2.15.jar 
+ axis2-clustering-1.5.2.jar jaxen-1.1.1.jar neethi-2.0.4.jar jettison-
+ 1.0-RC2.jar wstx-asl-3.2.9.jar sunjce_provider.jar axis2-kernel-1.5.2
+ .jar jdom2.jar axis2-java2wsdl-1.5.2.jar
+Class-Path: .
+Main-Class: cn.edu.buaa.act.service4all.core.localsamanager.Local
+ SAManager
+

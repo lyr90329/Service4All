@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name="BPMNServiceExecuteServiceUnit" class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.BPMNExecuteReceiveBussinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.BPMNServiceExecuteReceiver" 
+					  service="BPMNServiceExecuteService" 
+					  endpoint="BPMNServiceExecuteEndpoint"
+					  interface="BPMNServiceExecuteInterface" 
+					  serviceUnit="BPMNServiceExecuteServiceUnit"/>
+			<invokers>
+			
+				<invoker name="GetAvailableBPMNEngineInvoker" class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.GetAvailableBPMNEngineInvoker" 
+						 service="GetAvailableBPMNEngineService" 
+						 endpoint="GetAvailableBPMNEngineEndpoint" 
+						 operation="GetAvailableBPMNEngine" 
+						 interface="GetAvailableBPMNEngineInterface"
+						 serviceUnit="GetAvailableBPMNEngineServiceUnit">
+					<target service="BPMNQueryForExecutionService" 
+							interface="BPMNQueryForExecutionInterface" 
+							endpoint="BPMNQueryForExecutionEndpoint" 
+							operation="BPMNQueryForExecution" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+				
+				<invoker name="GetBPMNInvoker" class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.GetBPMNInvoker" 
+						 service="GetBPMNService" 
+						 endpoint="GetBPMNEndpoint" 
+						 operation="GetBPMN" 
+						 interface="GetBPMNInterface"
+						 serviceUnit="GetBPMNServiceUnit">
+						 
+					<target service="BPMNDocQueryService" 
+							interface="BPMNDocQueryInterface" 
+							endpoint="BPMNDocQueryEndpoint" 
+							operation="BPMNDocQuery" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+				
+				<invoker name="StartBPMNFeedbackInvoker" class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.StartBPMNFeedbackInvoker" 
+						 service="StartBPMNFeedbackService" 
+						 endpoint="StartBPMNFeedbackEndpoint" 
+						 operation="StartBPMNFeedback" 
+						 interface="StartBPMNFeedbackInterface"
+						 serviceUnit="StartBPMNFeedbackServiceUnit">
+						 
+					<target service="BPMNExecutionFeedbackService" 
+							interface="BPMNExecutionFeedbackInterface" 
+							endpoint="BPMNExecutionFeedbackEndpoint" 
+							operation="BPMNExecutionFeedback" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+		</unit>
+		
+		<unit name="BPMNMonitorInfoFeedbackReceiverServiceUnit" 
+				class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.BPMNMonitorInfoBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.BPMNMonitorInfoFeedbackReceiver" 
+					  service="BPMNMonitorInfoFeedbackReceiverService" 
+					  endpoint="BPMNMonitorInfoFeedbackReceiverEndpoint"
+					  interface="BPMNMonitorInfoFeedbackReceiverInterface" 
+					  serviceUnit="BPMNMonitorInfoFeedbackReceiverServiceUnit"/>
+		</unit>
+		
+		<unit name="BPMNExecuteResultReceiverServiceUnit" 
+				class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.BPMNExecuteResultBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.BPMNExecuteResultReceiver" 
+					  service="BPMNExecuteResultReceiverService" 
+					  endpoint="BPMNExecuteResultReceiverEndpoint"
+					  interface="BPMNExecuteResultReceiverInterface" 
+					  serviceUnit="BPMNExecuteResultReceiverServiceUnit"/>
+			<invokers>
+				<invoker name="BPMNExecuteResultRecordInvoker" 
+						class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.BPMNExecuteResultRecordInvoker" 
+						 service="BPMNExecuteResultInvokerService" 
+						 endpoint="BPMNExecuteResultInvokerEndpoint" 
+						 operation="BPMNExecuteResultInvokerExecute" 
+						 interface="BPMNExecuteResultInvokerInterface"
+						 serviceUnit="BPMNExecuteResultInvokerServiceUnit">
+					<target service="BPMNExecutionFeedbackService" 
+							interface="BPMNExecutionFeedbackInterface" 
+							endpoint="BPMNExecutionFeedbackEndpoint" 
+							operation="BPMNExecutionFeedback" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+				
+				<invoker name="EndBPMNFeedbackInvoker" class="cn.edu.buaa.act.service4all.bpmnexecution.endpoints.EndBPMNFeedbackInvoker" 
+						 service="EndBPMNFeedbackService" 
+						 endpoint="EndBPMNFeedbackEndpoint" 
+						 operation="EndBPMNFeedback" 
+						 interface="EndBPMNFeedbackInterface"
+						 serviceUnit="EndBPMNFeedbackServiceUnit">
+						 
+					<target service="BPMNExecutionFeedbackService" 
+							interface="BPMNExecutionFeedbackInterface" 
+							endpoint="BPMNExecutionFeedbackEndpoint" 
+							operation="BPMNExecutionFeedback" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+		</unit>
+	</units>
+</appengine>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addrList length="3">
+	<config>
+		<url>jdbc:mysql://124.205.18.184:3306/cloud_monitor</url>
+		<user>root</user>
+		<password>sdp123</password>
+	</config>	
+</addrList>

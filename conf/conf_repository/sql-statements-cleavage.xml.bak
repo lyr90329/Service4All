@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<properties>
+	<category name="query">
+		<property name="getKeywordByValueOpr"
+			value="select * from keywords_{} where value='{}'" />
+		<property name="getServiceByKeywordOpr"
+			value="select * from services_{} where id in (select serviceId from servicekeyword_{} where keywordid='{}')" />
+		<property name="getOperationByKeywordAndServiceIdOpr"
+			value="select * from operations_{} where serviceId='{}' and id in (select operationid from operationkeyword_{} where keywordid='{}')" />
+		<property name="getOperationByKeywordOpr"
+			value="select * from operations_{} where id in (select operationid from operationkeyword_{} where keywordid='{}')" />
+		<property name="getMessageByNameOpr"
+			value="select * from messages_{} where name ='{}'" />
+		<property name="getMessageByOperationOpr"
+			value="select * from messages_{} where id in (select input from operations_{} where id ='{}') or id in (select output from operations_{} where id ='{}')" />
+		<property name="getMessageByServiceOpr"
+			value="select * from messages_{} where serviceId ='{}'" />
+		<property name="getOperationByMessageOpr"
+			value="select * from operations_{} where input ='{}' or output = '{}'" />
+		<property name="getOperationByNameOpr"
+			value="select * from operations_{} where name = '{}'" />
+		<property name="getOperationByServiceOpr"
+			value="select * from operations_{} where serviceId = '{}'" />
+		<property name="getServiceByNameOpr"
+			value="select * from services_{} where name = '{}'" />
+		<property name="getServiceByMessageOpr"
+			value="select * from services_{} where id in (select serviceId from messages_{} where id = '{}')" />
+		<property name="getServiceByOperationOpr"
+			value="select * from services_{} where id in (select serviceId from operations_{} where id = '{}')" />
+		<property name="getServiceByARelationOpr"
+			value="select * from services_{} where id in (select srcId from servicegraph_{} where dstId = '{}')" />
+		<property name="getServiceBySURelationOpr"
+			value="select * from services_{} where id in (select dstId from servicegraph_{} where srcId = '{}')" />
+		<property name="getServiceBySIRelationOpr"
+			value="select * from services_{} where id in (select tmp.serviceId from servicecluster_{}, servicecluster_{} as tmp where servicecluster_{}.serviceid = '{}' and servicecluster_{}.clusterid = tmp.clusterid and servicecluster_{}.serviceid != tmp.serviceid)" />		
+	</category>
+	<category name="clusterTable">
+		<property name="createFileOpr"
+			value="create table clusters_{}(id bigint not null auto_increment,description text,primary key(id));" />
+		<property name="clearOpr" value="delete from clusters_{};" />
+		<property name="deleteOpr"
+			value="delete from clusters_{} where id='{}';" />
+		<property name="getOpr"
+			value="select * from clusters_{} where id='{}';" />
+		<property name="saveOpr"
+			value="insert into clusters_{} values('{}','{}');" />
+		<property name="getAllOpr" value="select * from clusters_{};" />
+	</category>
+	
+	<category name="serviceKeywordTFIDFTable">
+		<property name="createFileOpr"
+			value="create table serviceKeywordTFIDF_{}(keywordId bigint not null, serviceId bigint not null, TFIDF text, primary key(KeywordId, ServiceId), foreign key(keywordId) references keywords_{}(id) on delete cascade, foreign key(serviceId) references services_{}(id) on delete cascade);" />
+		<property name="clearOpr"
+			value="delete from serviceKeywordTFIDF_{};" />
+		<property name="deleteOpr"
+			value="delete from serviceKeywordTFIDF_{} where keywordId='{}' and serviceId='{}';" />
+		<property name="getOpr"
+			value="select * from serviceKeywordTFIDF_{} where keywordId='{}' and serviceId='{}';" />
+		<property name="saveOpr"
+			value="insert into serviceKeywordTFIDF_{} values('{}','{}','{}');" />
+		<property name="getAllOpr"
+			value="select * from serviceKeywordTFIDF_{};" />
+	</category>
+	<category name="operationKeywordTFIDFTable">
+		<property name="createFileOpr"
+			value="create table operationKeywordTFIDF_{}(keywordId bigint not null, operationId bigint not null, TFIDF text, primary key(keywordId, operationId), foreign key(keywordId) references keywords_{}(id) on delete cascade, foreign key(operationId) references operations_{}(id) on delete cascade);" />
+		<property name="clearOpr"
+			value="delete from operationKeywordTFIDF_{};" />
+		<property name="deleteOpr"
+			value="delete from operaitonKeywordTFIDF_{} where keywordId='{}' and operationId='{}';" />
+		<property name="getOpr"
+			value="select * from operationKeywordTFIDF_{} where keywordId='{}' and operaitonId='{}';" />
+		<property name="saveOpr"
+			value="insert into operationKeywordTFIDF_{} values('{}','{}','{}');" />
+		<property name="getAllOpr"
+			value="select * from operaitonKeywordTFIDF_{};" />
+	</category>
+	
+	<category name="serviceClusterTable">
+		<property name="createFileOpr"
+			value="create table serviceCluster_{}(serviceId bigint not null,clusterId bigint not null,isCore int,primary key(serviceId,clusterId),foreign key(serviceId) references services_{}(id) on delete cascade,foreign key(clusterId) references clusters_{}(id) on delete cascade);" />
+		<property name="clearOpr"
+			value="delete from serviceCluster_{};" />
+		<property name="deleteOpr"
+			value="delete from serviceCluster_{} where serviceId='{}' and clusterId = '{}';" />
+		<property name="getOpr"
+			value="select * from serviceCluster_{} where serviceId='{}' and clusterId = '{}';" />
+		<property name="getServicesByClusterIdOpr"
+			value="select * from serviceCluster_{} where clusterId='{}' ;" />
+	
+		
+		<property name="getAllOpr"
+			value="select * from serviceCluster_{};" />
+		<property name="getDistinctClusterIdOpr"
+			value="SELECT clusterId , count(*) FROM serviceCluster_{}  group by clusterId order by count(*) desc;" />
+		
+		<property name="saveOpr"
+			value="insert into serviceCluster_{} values('{}','{}','{}');" />
+	</category>
+	<category name="operationQosTable">
+		<property name="createFileOpr"
+			value="create table operationQos_{}(id bigint not null auto_increment,operationId bigint not null,startTime datetime,endTime datetime,responseTime bigint,input text,output text,exception text,collectSource bigint,primary key(id),foreign key(operationId) references operations_{}(id) on delete cascade);" />
+		<property name="clearOpr" value="delete from operationQos_{};" />
+		<property name="deleteOpr"
+			value="delete from operationQos_{} where operationId='{}';" />
+		<property name="getOpr"
+			value="select * from operationQos_{} where operationId='{}';" />
+		<property name="getByDatesOpr"
+			value="select * from operationQos_{} where operationId='{}' and startTime &gt;= '{}' and startTime &lt;= '{}';" />
+		<property name="getAllOpr"
+			value="select * from operationQos_{};" />
+		<property name="saveOpr"
+			value="insert into operationQos_{}(operationId,startTime,endTime,responseTime,input,output,exception,collectSource) values('{}','{}','{}','{}','{}','{}','{}','{}');" />
+	</category>
+	<category name="operationProxyTable">
+		<property name="createFileOpr"
+			value="create table operationProxy_{}(id bigint not null auto_increment,operationId bigint not null,path text,primary key(id),foreign key(operationId) references operations_{}(id) on delete cascade);" />
+		<property name="clearOpr"
+			value="delete from operationProxy_{};" />
+		<property name="deleteOpr"
+			value="delete from operationProxy_{} where operationId='{}';" />
+		<property name="getOpr"
+			value="select * from operationProxy_{} where operationId='{}';" />
+		<property name="getAllOpr"
+			value="select * from operationProxy_{};" />
+		<property name="saveOpr"
+			value="insert into operationProxy_{}(operationId,path) values('{}','{}');" />
+	</category>
+	<category name="serviceGraphTable">
+		<property name="createFileOpr"
+			value="create table serviceGraph_{}(srcId bigint not null,dstId bigint not null,weight double,primary key(srcId,dstId),foreign key(srcId) references services_{}(id) on delete cascade,foreign key(dstId) references services_{}(id) on delete cascade);" />
+		<property name="clearOpr" value="delete from serviceGraph_{};" />
+		<property name="deleteOpr"
+			value="delete from serviceGraph_{} where srcId='{}' and dstId = '{}';" />
+		<property name="getOpr"
+			value="select * from serviceGraph_{} where srcId='{}' and dstId = '{}';" />
+		<property name="getAllOpr"
+			value="select * from serviceGraph_{};" />
+		
+		<property name="getForeOperationIdsOpr"
+			value="select srcId from serviceGraph_{} where dstId = '{}';" />
+		<property name="getAfterOperationIdsOpr"
+			value="select dstId from serviceGraph_{} where srcId='{}' ;" />
+	
+		<property name="saveOpr"
+			value="insert into serviceGraph_{} values('{}','{}','{}');" />
+	</category>
+	<category name="serviceSimilarityTable">
+		<property name="createFileOpr"
+			value="create table serviceSimilarity_{}(srcId bigint not null,dstId bigint not null,similarity double,primary key(srcId,dstId),foreign key(srcId) references services_{}(id) on delete cascade,foreign key(dstId) references services_{}(id) on delete cascade);" />
+		<property name="clearOpr" value="delete from serviceGraph_{};" />
+		<property name="deleteOpr"
+			value="delete from serviceSimilarity_{} where srcId='{}' and dstId = '{}';" />
+		<property name="getOpr"
+			value="select * from serviceSimilarity_{} where srcId='{}' and dstId = '{}';" />
+		<property name="getAllOpr"
+			value="select * from serviceSimilarity_{};" />
+		<property name="saveOpr"
+			value="insert into serviceSimilarity_{} values('{}','{}','{}');" />
+	</category>
+	<category name="operationTable">
+		<property name="saveOpr"
+			value="insert into operations_{}(name,description,input,output,fault,serviceId) values('{}','{}','{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from operations_{} where name='{}';" />
+		<property name="getOpr"
+			value="select * from operations_{} where name='{}';" />
+		<property name="getAllOpr" value="select * from operations_{};" />
+		<property name="clearOpr" value="delete from operations_{};" />
+		<property name="createMemOpr"
+			value="create memory table operations_{}(id bigint GENERATED BY DEFAULT AS IDENTITY (START WITH 1, INCREMENT BY 1) ,name varchar(100) not null,description varchar(200),input bigint not null,output bigint not null,fault varchar(200),serviceId bigint not null,primary key(id),foreign key(serviceId) references services(id) on delete cascade,foreign key(input) references message(id) on delete cascade,foreign key(output) references message(id) on delete cascade);" />
+		<property name="createFileOpr"
+			value="create table operations_{}(id bigint not null auto_increment,name varchar(100) not null,description text,input bigint not null,output bigint not null,fault text,serviceId bigint not null,primary key(id),foreign key(serviceId) references services_{}(id) on delete cascade,foreign key(input) references messages_{}(id) on delete cascade,foreign key(output) references messages_{}(id) on delete cascade);" />
+		<property name="getMinOpr"
+			value="select * from operations_{} where id=(select min(id) from operations_{});" />
+		<property name="getMaxOpr"
+			value="select * from operations_{} where id=(select max(id) from operations_{});" />
+		<property name="dropOpr" value="drop table operations_{};" />
+		<property name="getByIdOpr"
+			value="select * from operations_{} where id='{}';" />
+	  <property name="getByServiceIdOpr"
+			value="select * from operations_{} where serviceId='{}';" />
+	
+	</category>
+	<category name="messageTable">
+		<property name="saveOpr"
+			value="insert into messages_{}(name,description,serviceId,typeId) values('{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from messages_{} where name='{}';" />
+		<property name="getOpr"
+			value="select * from messages_{} where name='{}';" />
+		<property name="getOpr_message"
+			value="select * from messages_{} where id='{}';" />
+		
+		<property name="getAllOpr" value="select * from messages_{};" />
+		<property name="clearOpr" value="delete from messages_{};" />
+		<property name="createMemOpr"
+			value="create memory table messages_{}(id bigint GENERATED BY DEFAULT AS IDENTITY (START WITH 1, INCREMENT BY 1),name varchar(100) not null,operationId bigint not null,description varchar(200),serviceId bigint not null,typeId bigint not null,primary key(id),foreign key(operationId) references operation_{}(id) on delete cascade,foreign key(serviceId) references services_{}(id) on delete cascade,foreign key(typeId) references type_{}(id) on delete cascade);" />
+		<property name="createFileOpr"
+			value="create table messages_{}(id bigint not null auto_increment,name varchar(100) not null,description text,serviceId bigint not null,typeId bigint not null,primary key(id),foreign key(serviceId) references services_{}(id) on delete cascade,foreign key(typeId) references types_{}(id) on delete cascade);" />
+		<property name="getMinOpr"
+			value="select * from messages_{} where id=(select min(id) from messages_{});" />
+		<property name="getMaxOpr"
+			value="select * from messages_{} where id=(select max(id) from messages_{});" />
+		<property name="updateOpr"
+			value="update messages_{} set name='{}',description='{}',serviceId='{}',typeId='{}',content='{}' where id='{}';" />
+		
+		<property name="dropOpr" value="drop table messages_{};" />
+	</category>
+	<category name="jobTable">
+		<property name="saveOpr"
+			value="insert into jobs values('{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from jobs where id='{}';" />
+		<property name="getOpr"
+			value="select * from jobs where id='{}';" />
+		<property name="getAllOpr" value="select * from jobs;" />
+		<property name="clearOpr" value="delete from jobs;" />
+		<property name="createMemOpr"
+			value="create memory table jobs(id bigint,start_time datetime not null,end_time datetime not null,description varchar(200),primary key(id));" />
+		<property name="dropOpr" value="drop table jobs;" />
+		<property name="getMaxOpr"
+			value="select * from jobs where id=(select max(id) from jobs);" />
+	</category>
+	<category name="typeTable">
+		<property name="saveOpr"
+			value="insert into type_{}(name,description) values('{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from type_{} where id='{}';" />
+		<property name="getOpr"
+			value="select * from type_{} where id='{}';" />
+		<property name="getAllOpr"
+			value="select * from jars where jobId='{}';" />
+		<property name="clearOpr" value="delete from jars;" />
+		<property name="createMemOpr"
+			value="create memory table jars(id bigint GENERATED BY DEFAULT AS IDENTITY (START WITH 1, INCREMENT BY 1) ,  name varchar(100) not null,path varchar(100) not null,url varchar(200) not null,description varchar(200),version varchar(100),projectId bigint not null,jobId bigint not null,primary key(id),foreign key(jobId) references Jobs(id) on delete cascade,foreign key(projectId) references Projects(id) on delete cascade);" />
+		<property name="createFileOpr"
+			value="create table types_{}(id bigint not null auto_increment,name varchar(100) not null,description text,primary key(id));" />
+		<property name="dropOpr" value="drop table jars;" />
+	</category>
+	<category name="additionalInfoTable">
+		<property name="saveOpr"
+			value="insert into javas(name,path,url,description,version,jobId,projectId) values('{}','{}','{}','{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from javas where url='{}'and jobId='{}';" />
+		<property name="getOpr"
+			value="select * from javas where url='{}'and jobId='{}';" />
+		<property name="getAllOpr"
+			value="select * from javas where jobId='{}';" />
+		<property name="clearOpr" value="delete from javas;" />
+		<property name="createMemOpr"
+			value="create memory table javas(id bigint GENERATED BY DEFAULT AS IDENTITY (START WITH 1, INCREMENT BY 1) ,  name varchar(100) not null,path varchar(100) not null,url varchar(200) not null,description varchar(200),version varchar(100),projectId bigint not null,jobId bigint not null,primary key(id),foreign key(jobId) references Jobs(id) on delete cascade,foreign key(projectId) references Projects(id) on delete cascade);" />
+		<property name="createFileOpr"
+			value="create table additionalInfo_{}(id bigint not null auto_increment,type varchar(100) not null,value text not null,serviceId bigint not null,primary key(id),foreign key(serviceId) references services_{}(id) on delete cascade);" />
+		<property name="dropOpr" value="drop table javas;" />
+	</category>
+	<category name="keywordTable">
+		<property name="saveOpr"
+			value="insert into keywords_{}(name,path,url,description,version,jobId,projectId) values('{}','{}','{}','{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from keywords_{} where value='{}';" />
+		<property name="getOpr"
+			value="select * from classes where url='{}'and jobId='{}';" />
+		<property name="getOprByValue"
+			value="select * from keywords_{} where value='{}';" />
+		
+		<property name="getAllOpr" value="select * from keywords_{};" />
+		<property name="clearOpr" value="delete from classes;" />
+		<property name="createMemOpr" value="" />
+		<property name="createFileOpr"
+			value="create table keywords_{}(id bigint not null auto_increment,value varchar(100) not null,description text,primary key(id));" />
+		<property name="dropOpr" value="drop table classes;" />
+	</category>
+	<category name="serviceKeywordTable">
+		<property name="saveOpr"
+			value="insert into serviceKeyword_{} values('{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from serviceKeyword_{} where id='{}';" />
+		<property name="getOpr"
+			value="select * from serviceKeyword_{} where id='{}';" />
+		<property name="getByKeywordIdOpr"
+			value="select * from serviceKeyword_{} where keywordId='{}' ;" />
+		<property name="updateServiceKeyword"
+			value="update serviceKeyword_{} set quantity=quantity+1 where keywordId={}" />
+		
+		
+		<property name="getAllOpr" value="select * from serviceKeyword_{};" />
+		<property name="clearOpr" value="delete from serviceKeyword_{};" />
+		<property name="createMemOpr" value="" />
+		<property name="createFileOpr"
+			value="create table serviceKeyword_{}(id bigint not null auto_increment,keywordId bigint not null,serviceId bigint not null,quantity bigint not null,primary key(id),foreign key(serviceId) references services_{}(id) on delete cascade,foreign key(keywordId) references keywords_{}(id) on delete cascade);" />
+		<property name="dropOpr" value="drop table jobs;" />
+	</category>
+	<category name="operationKeywordTable">
+		<property name="saveOpr"
+			value="insert into projects(name,url,description,owner) values('{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from projects where url='{}';" />
+		<property name="getOpr"
+			value="select * from projects where url='{}';" />
+		<property name="updateOperationKeyword"
+			value="update operationkeyword_{} set quantity=quantity+1 where keywordId={}" />
+		
+		<property name="getAllOpr" value="select * from projects;" />
+		<property name="clearOpr" value="delete from projects;" />
+		<property name="createMemOpr" value="" />
+		<property name="createFileOpr"
+			value="create table operationKeyword_{}(id bigint not null auto_increment,keywordId bigint not null,operationId bigint not null,quantity bigint not null,primary key(id),foreign key(operationId) references operations_{}(id) on delete cascade,foreign key(keywordId) references keywords_{}(id) on delete cascade);" />
+		<property name="dropOpr" value="drop table projects;" />
+	</category>
+	<category name="serviceTable">
+		<property name="saveOpr"
+			value="insert into services_{}(name,description,url,addition_info,wsdl_url,wsdl_path,businessId) values('{}','{}','{}','{}','{}','{}','{}');" />
+		<property name="deleteOpr"
+			value="delete from services_{} where url='{}';" />
+		<property name="deleteIgnoreJobOpr"
+			value="delete from services_-1 where url='{}';" />
+		<property name="getOpr"
+			value="select * from services_{} where url='{}';" />
+		<property name="getByIdOpr"
+			value="select * from services_{} where id='{}';" />
+		<property name="getByNameOpr"
+			value="select * from services_{} where name='{}';" />
+		<property name="getIgnoreJobOpr"
+			value="select distinct name,description,url,addition_info,wsdl_url,wsdl_path,businessId from services_-1 where url='{}';" />
+		<property name="getAllOpr" value="select * from services_{};" />
+		<property name="getAllIgnoreJobOpr"
+			value="select distinct name,description,url,addition_info,wsdl_url,wsdl_path,businessId from services_-1;" />
+		<property name="clearOpr" value="delete from services_{};" />
+		<property name="createMemOpr"
+			value="create memory table services_{}(id bigint GENERATED BY DEFAULT AS IDENTITY (START WITH 1, INCREMENT BY 1) , name varchar(100) not null,description varchar(200),url varchar(200) not null,addition_info varchar(200),wsdl_url varchar(100) not null,wsdl_path varchar(100) not null,businessId bigint not null,primary key(id),foreign key(businessId) references BusinessEntity_{}(id) on delete cascade);" />
+		<property name="createFileOpr"
+			value="create table services_{}(id bigint not null auto_increment,name varchar(100) not null,description varchar(200),url varchar(200) not null,addition_info text,wsdl_url varchar(100) not null,wsdl_path varchar(100) not null,businessId bigint not null,primary key(id),foreign key(businessId) references BusinessEntity_{}(id) on delete cascade);" />
+		<property name="getMinOpr"
+			value="select * from services_{} where id=(select min(id) from services_{});" />
+		<property name="getMaxOpr"
+			value="select * from services_{} where id=(select max(id) from services_{});" />
+		<property name="dropOpr" value="drop table services_{};" />
+	</category>
+</properties>
+

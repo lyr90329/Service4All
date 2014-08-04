@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service name="localSAManagerService">
+	<description> This is local samanager service. </description>
+	<parameter name="ServiceClass" locked="false">
+		cn.edu.buaa.act.service4all.core.localsamanager.service.LocalSAManagerService</parameter>
+	<operation name="initial">
+ 	    <actionMapping>urn:initial</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver" />
+  	</operation>
+ 	 <operation name="saDeploy">
+ 	    <actionMapping>urn:saDeploy</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+  	</operation>
+  	<operation name="saUnDeploy">
+ 	    <actionMapping>urn:saUnDeploy</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+  	</operation>
+  	<operation name="restart">
+ 	    <actionMapping>urn:restart</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+  	</operation>
+  	<operation name="deployWebApp">
+ 	    <actionMapping>urn:deployWebApp</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+  	</operation>
+  	<operation name="undeployWebApp">
+ 	    <actionMapping>urn:undeployWebApp</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+  	</operation>
+  	<operation name="deployService">
+ 	    <actionMapping>urn:deployService</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+  	</operation>
+  	<operation name="undeployService">
+ 	    <actionMapping>urn:undeployService</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver" />
+  	</operation>
+  	<operation name="setInvokeUser">
+ 	    <actionMapping>urn:undeployService</actionMapping> 
+   		<messageReceiver class="org.apache.axis2.receivers.RawXMLINOnlyMessageReceiver" />
+  	</operation>
+
+</service>

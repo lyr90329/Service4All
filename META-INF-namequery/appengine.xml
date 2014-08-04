@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+	<units>
+		<unit name="query" class="cn.edu.buaa.act.service4all.atomicws.queryservicenamebyid.WSNameQuerybyIDBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" >
+			<receiver class="cn.edu.buaa.act.service4all.atomicws.queryservicenamebyid.WSNameQuerybyIDReceiver" 
+					  service="WSNameQuerybyIDService" 
+					  endpoint="WSNameQuerybyIDEndpoint"
+					  interface="WSNameQuerybyIDInterface" 
+					  serviceUnit="WSNameQuerybyIDUnit"/>
+			<invokers>
+				<invoker class="cn.edu.buaa.act.service4all.atomicws.queryservicenamebyid.WSNameQuerybyIDQueryInvoker" 
+						 service="WSAdressQueryByIDService" 
+						 endpoint="WSAdressQueryByIDEndpoint" 
+						 operation="WSAdressQueryByIDInvoker" 
+						 interface="WSAdressQueryByIDInterface"
+						 serviceUnit="WSAdressQueryByIDUnit">
+					<target service="AppInfoQueryService" 
+						 endpoint="AppInfoQueryEndpoint" 
+						 operation="AppInfoQueryInvoker" 
+						 interface="AppInfoQueryInterface"
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+						
+				</invoker>
+			</invokers>
+		</unit>
+
+	</units>
+</appengine>

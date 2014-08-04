@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+<csrepository address="http://192.168.3.218:8080/axis2/services/QueryService"/>
+<toplogyservice address="http://192.168.3.218:8080/axis2/services/BusService"/>
+<databaseinfo  address="http://192.168.3.218:8080"/>
+<monitorinfo  address="http://192.168.3.221:8080"/>
+<busaddress  address="http://192.168.3.218:8080"/>
+<ResultService address="http://192.168.3.218:8080/axis2/services/ResultService"/>
+<ResultRepositoryService address="http://192.168.3.218:8080/axis2/services/ResultRepositoryService"/>
+<RepositoryClientService 
+address="http://192.168.3.221:8080/axis2/services/ServiceForBusService"/>
+</config>

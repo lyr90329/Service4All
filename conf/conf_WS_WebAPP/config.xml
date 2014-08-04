@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addrList length="8">
+	<address>
+		<cutfiledir>C:\\sandbox\\conf\\fileIsolation.class</cutfiledir>
+		<tempZip>C:\\sandbox\\temp\\service\\</tempZip>
+		<getZip>C:\\sandbox\\temp\\get\\</getZip>
+		<!-- 以MB为单位 -->
+		<standardsize>10.00</standardsize>
+		<temp>C:\\sandbox\\temp\\unzip\\</temp>
+		<log>C:\\sandbox\\conf\\sandbox.log</log>
+		<virStg>C:\\sandbox\\virtualstorage\\</virStg>
+		<filenum>5</filenum>
+	</address>
+	<vitualstorageaddress>
+		<fileIsolationbefore>C:\\sandbox\\conf\\fileIsolationbefore.aj</fileIsolationbefore>
+		<fileIsolation>C:\\sandbox\\conf\\fileIsolation.aj</fileIsolation>
+		<vsAddress>C:\\\\sandbox\\\\virtualstorage\\\\</vsAddress>
+		<jarAddress>C:\\sandbox\\conf\\aspectjrt.jar;C:\\sandbox\\conf\\aspectjtools.jar</jarAddress>
+	</vitualstorageaddress>
+</addrList>

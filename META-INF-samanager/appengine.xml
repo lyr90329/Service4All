@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appengine>
+
+	<!--                   Appliance                        -->
+	<units>
+		<unit name="hostRegister" 
+				class="cn.edu.buaa.act.service4all.core.samanager.appliance.register.ApplianceRegisterBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				applianceType="host">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.appliance.register.ApplianceRegisterReceiver" 
+					  service="ApplianceRegisterService" 
+					  endpoint="ApplianceRegisterEndpoint"
+					  interface="ApplianceRegisterInterface" 
+					  serviceUnit="ApplianceRegisterServiceUnit"/>
+		</unit>
+		
+		<unit name="applianceUndeploymentFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.appliance.undeployment.ApplianceUndeploymentFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				applianceType="host">
+				
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.appliance.undeployment.ApplianceUndeploymentFeedbackReceiver" 
+					  service="ApplianceUndeploymentFeedbackService" 
+					  endpoint="ApplianceUndeploymentFeedbackEndpoint"
+					  interface="ApplianceUndeploymentFeedbackInterface" 
+					  serviceUnit="ApplianceUndeploymentFeedbackServiceUnit"/>
+		</unit>
+		
+		<unit name="applianceDeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.appliance.deployment.ApplianceDeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				applianceType="host">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.appliance.deployment.ApplianceDeploymentReceiver" 
+					  service="ApplianceDeploymentService" 
+					  endpoint="ApplianceDeploymentEndpoint"
+					  interface="ApplianceDeploymentInterface" 
+					  serviceUnit="ApplianceDeploymentServiceUnit"/>
+		</unit>
+		
+		<unit name="applianceUndeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.appliance.undeployment.ApplianceUndeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				applianceType="host">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.appliance.undeployment.ApplianceUndeploymentReceiver" 
+					  service="ApplianceUndeploymentService" 
+					  endpoint="ApplianceUndeploymentEndpoint"
+					  interface="ApplianceUndeploymentInterface" 
+					  serviceUnit="ApplianceUndeploymentServiceUnit"/>
+		</unit>
+		<!--           The End of Appliance                                     -->
+ 
+		<!--           The AppServer and Web applications  -->
+		<unit name="appServerQueryForDeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.AppServerQueryForDeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="app"
+				applianceType="appserver">
+				
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.AppServerQueryForDeploymentReceiver" 
+					  service="AppServerQueryForDeploymentService" 
+					  endpoint="AppServerQueryForDeploymentEndpoint"
+					  interface="AppServerQueryForDeploymentInterface" 
+					  serviceUnit="AppServerQueryForDeploymentServiceUnit"/>
+			<invokers>
+				<invoker class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.AppServerQueryForDeploymentInvoker" 
+						 service="AppServerQueryForDeploymentInvokerService" 
+						 endpoint="AppServerQueryForDeploymentInvokerEndpoint" 
+						 operation="AppServerQueryForDeploymentInvoker" 
+						 interface="AppServerQueryForDeploymentInvokerInterface"
+						 serviceUnit="AppServerQueryForDeploymentInvokerServiceUnit">
+					<target service="ApplianceDeploymentService" 
+							interface="ApplianceDeploymentInterface" 
+							endpoint="ApplianceDeploymentEndpoint" 
+							operation="ApplianceDeployment" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+		</unit>
+		
+		<unit name="appDeploymentFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.WebAppDeploymentFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="app"
+				applianceType="appserver">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.WebAppDeploymentFeedbackReceiver" 
+					  service="WebAppDeploymentFeedbackService" 
+					  endpoint="WebAppDeploymentFeedbackEndpoint"
+					  interface="WebAppDeploymentFeedbackInterface" 
+					  serviceUnit="WebAppDeploymentFeedbackServiceUnit"/>
+		</unit>
+	
+		
+		<unit name="appQueryForUndeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.WebAppQueryForUndeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud"
+				appType="app" 
+				applianceType="appserver">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.WebAppQueryForUndeploymentReceiver" 
+					  service="WebAppQueryForUndeploymentService" 
+					  endpoint="WebAppQueryForUndeploymentEndpoint"
+					  interface="WebAppQueryForUndeploymentInterface" 
+					  serviceUnit="WebAppQueryForUndeploymentServiceUnit"/>
+		</unit>
+		
+		<unit name="appUndeploymentFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.WebAppUndeploymentFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="app" 
+				applianceType="appserver" >
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webapp.WebAppUndeploymentFeedbackReceiver" 
+					  service="WebAppUndeploymentFeedbackService" 
+					  endpoint="WebAppUndeploymentFeedbackEndpoint"
+					  interface="WebAppUndeploymentFeedbackInterface" 
+					  serviceUnit="WebAppUndeploymentFeedbackServiceUnit"/>
+		</unit>
+		<!-- The End of AppServer and app -->
+		<!--           The Axis2 and Web service  -->
+		<unit name="axis2QueryForDeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.Axis2QueryForDeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="webservice"
+				applianceType="axis2">
+				
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.Axis2QueryForDeploymentReceiver" 
+					  service="Axis2QueryForDeploymentService" 
+					  endpoint="Axis2QueryForDeploymentEndpoint"
+					  interface="Axis2QueryForDeploymentInterface" 
+					  serviceUnit="Axis2QueryForDeploymentServiceUnit"/>
+			<invokers>
+				<invoker class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.Axis2QueryForDeploymentInvoker" 
+						 service="Axis2QueryForDeploymentInvokerService" 
+						 endpoint="Axis2QueryForDeploymentInvokerEndpoint" 
+						 operation="Axis2QueryForDeploymentInvoker" 
+						 interface="Axis2QueryForDeploymentInvokerInterface"
+						 serviceUnit="Axis2QueryForDeploymentInvokerServiceUnit">
+					<target service="ApplianceDeploymentService" 
+							interface="ApplianceDeploymentInterface" 
+							endpoint="ApplianceDeploymentEndpoint" 
+							operation="ApplianceDeployment" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+		</unit>
+		
+		<unit name="wsDeploymentFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSDeploymentFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="webservice"
+				applianceType="axis2">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSDeploymentFeedbackReceiver" 
+					  service="WSDeploymentFeedbackService" 
+					  endpoint="WSDeploymentFeedbackEndpoint"
+					  interface="WSDeploymentFeedbackInterface" 
+					  serviceUnit="WSDeploymentFeedbackServiceUnit"/>
+		</unit>
+		
+		<unit name="wsExecutionFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSExecutionFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="webservice"
+				applianceType="axis2">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSExecutionFeedbackReceiver" 
+					  service="WSExecutionFeedbackService" 
+					  endpoint="WSExecutionFeedbackEndpoint"
+					  interface="WSExecutionFeedbackInterface" 
+					  serviceUnit="WSExecutionFeedbackServiceUnit"/>
+		</unit>
+		
+		<unit name="wsQueryForExecution" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSQueryForExecutionBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="webservice"
+				applianceType="axis2">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSQueryForExecutionReceiver" 
+					  service="WSQueryForExecutionService" 
+					  endpoint="WSQueryForExecutionEndpoint"
+					  interface="WSQueryForExecutionInterface" 
+					  serviceUnit="WSQueryForExecutionServiceUnit"/>
+		</unit>
+		
+		<unit name="wsQueryForUndeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSQueryForUndeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud"
+				appType="webservice" 
+				applianceType="axis2">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSQueryForUndeploymentReceiver" 
+					  service="WSQueryForUndeploymentService" 
+					  endpoint="WSQueryForUndeploymentEndpoint"
+					  interface="WSQueryForUndeploymentInterface" 
+					  serviceUnit="WSQueryForUndeploymentServiceUnit"/>
+		</unit>
+		
+		<unit name="wsUndeploymentFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSUndeploymentFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="webservice" 
+				applianceType="axis2" >
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.app.webservice.WSUndeploymentFeedbackReceiver" 
+					  service="WSUndeploymentFeedbackService" 
+					  endpoint="WSUndeploymentFeedbackEndpoint"
+					  interface="WSUndeploymentFeedbackInterface" 
+					  serviceUnit="WSUndeploymentFeedback ServiceUnit"/>
+		</unit>
+		
+		<!-- The End of Axis2 and Web Service -->
+		
+	
+	
+		<!-- The BPMN Engine and BPMNService -->
+		<unit name="bpmnEngineQueryForDeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNEngineQueryForDeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="bpmn"
+				applianceType="bpmnengine">
+				
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNEngineQueryForDeploymentReceiver" 
+					  service="BPMNEngineQueryForDeploymentService" 
+					  endpoint="BPMNEngineQueryForDeploymentEndpoint"
+					  interface="BPMNEngineQueryForDeploymentInterface" 
+					  serviceUnit="BPMNEngineQueryForDeploymentServiceUnit"/>
+		</unit>
+		
+		<unit name="bpmnDeploymentFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNDeploymentFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="bpmn"
+				applianceType="bpmnengine">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNDeploymentFeedbackReceiver" 
+					  service="BPMNDeploymentFeedbackService" 
+					  endpoint="BPMNDeploymentFeedbackEndpoint"
+					  interface="BPMNDeploymentFeedbackInterface" 
+					  serviceUnit="BPMNDeploymentFeedbackServiceUnit"/>
+		</unit>
+		
+		<unit name="bpmnExecutionFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNExecutionFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="bpmn"
+				applianceType="bpmnengine">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNExecutionFeedbackReceiver" 
+					  service="BPMNExecutionFeedbackService" 
+					  endpoint="BPMNExecutionFeedbackEndpoint"
+					  interface="BPMNExecutionFeedbackInterface" 
+					  serviceUnit="BPMNExecutionFeedbackServiceUnit"/>
+		</unit>
+		
+		<unit name="bpmnQueryForExecution" 
+				class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNQueryForExecutionBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="bpmn"
+				applianceType="bpmnengine">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNQueryForExecutionReceiver" 
+					  service="BPMNQueryForExecutionService" 
+					  endpoint="BPMNQueryForExecutionEndpoint"
+					  interface="BPMNQueryForExecutionInterface" 
+					  serviceUnit="BPMNQueryForExecutionServiceUnit"/>
+			<invokers>
+				<invoker name="BPMNEngineCreationInvoker" 
+				         class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNEngineCreationInvoker" 
+						 service="BPMNEngineCreationService" 
+						 endpoint="BPMNEngineCreationEndpoint" 
+						 operation="BPMNEngineCreation" 
+						 interface="BPMNEngineCreationInterface"
+						 serviceUnit="BPMNEngineCreationServiceUnit">						 
+					<target service="ApplianceDeploymentService" 
+							interface="ApplianceDeploymentInterface" 
+							endpoint="ApplianceDeploymentEndpoint" 
+							operation="ApplianceDeployment" 
+							uri="http://sdp.act.buaa.edu.cn/servicecloud"/>
+				</invoker>
+			</invokers>
+		</unit>
+		
+		<unit name="bpmnQueryForUndeployment" 
+				class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNQueryForUndeploymentBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud"
+				appType="bpmn"
+				applianceType="bpmnengine">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNQueryForUndeploymentReceiver" 
+					  service="BPMNQueryForUndeploymentService" 
+					  endpoint="BPMNQueryForUndeploymentEndpoint"
+					  interface="BPMNQueryForUndeploymentInterface" 
+					  serviceUnit="BPMNQueryForUndeploymentServiceUnit"/>
+		</unit>
+		
+		<unit name="bpmnUndeploymentFeedback" 
+				class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNUndeploymentFeedbackBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				appType="bpmn"
+				applianceType="bpmnengine">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.bpmnengine.endpoints.BPMNUndeploymentFeedbackReceiver" 
+					  service="BPMNUndeploymentFeedbackService" 
+					  endpoint="BPMNUndeploymentFeedbackEndpoint"
+					  interface="BPMNUndeploymentFeedbackInterface" 
+					  serviceUnit="BPMNUndeploymentFeedbackServiceUnit"/>
+		</unit>
+		<!--         The End of BPMN and BPMN Service          -->
+	
+	
+		<!-- The query for appliance -->
+		<unit name="appInfoQuery" 
+				class="cn.edu.buaa.act.service4all.core.samanager.query.AppInfoQueryBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				
+				applianceType="host">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.query.AppInfoQueryReceiver" 
+					  service="AppInfoQueryService" 
+					  endpoint="AppInfoQueryEndpoint"
+					  interface="AppInfoQueryInterface" 
+					  serviceUnit="AppInfoQueryServiceUnit"/>
+		</unit>
+		
+		<unit name="appQuery" 
+				class="cn.edu.buaa.act.service4all.core.samanager.query.AppQueryBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				
+				applianceType="host">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.query.AppQueryReceiver" 
+					  service="AppQueryService" 
+					  endpoint="AppQueryEndpoint"
+					  interface="AppQueryInterface" 
+					  serviceUnit="AppQueryServiceUnit"/>
+		</unit>
+		
+		<unit name="applianceQuery" 
+				class="cn.edu.buaa.act.service4all.core.samanager.query.ApplianceQueryBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				
+				applianceType="host">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.query.ApplianceQueryReceiver" 
+					  service="ApplianceQueryService" 
+					  endpoint="ApplianceQueryEndpoint"
+					  interface="ApplianceQueryInterface" 
+					  serviceUnit="ApplianceQueryServiceUnit"/>
+		</unit>
+		
+		<unit name="appliancInfoQuery" 
+				class="cn.edu.buaa.act.service4all.core.samanager.query.ApplianceInfoQueryBusinessUnit" 
+				targetNamespace="http://sdp.act.buaa.edu.cn/servicecloud" 
+				
+				applianceType="host">
+			<receiver class="cn.edu.buaa.act.service4all.core.samanager.query.ApplianceInfoQueryReceiver" 
+					  service="ApplianceInfoQueryService" 
+					  endpoint="ApplianceInfoQueryEndpoint"
+					  interface="ApplianceInfoQueryInterface" 
+					  serviceUnit="ApplianceInfoQueryServiceUnit"/>
+		</unit>
+		
+	</units>
+</appengine>

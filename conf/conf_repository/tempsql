@@ -1,0 +1,1 @@
+<!--value="insert into BPMN (BPMNLocation,DiagramLocation,BPMNName,DiagramName,AnotationID,BPMNContent,DiagramContent) values('{}','{}','{}','{}','{}',?,?);" />-->

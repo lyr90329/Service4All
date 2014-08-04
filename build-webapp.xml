@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project name="WebAppDeployComponent" default="zip_cmp">
+	
+	<property environment="env"/>
+	
+	<property name="version" value="2012.04"/>
+	<property name="cmp_name" value="servicemix-${ant.project.name}-installer-${version}"/>
+	<property name="jar_name" value="servicemix-${ant.project.name}-${version}"/>
+	<property name="jar_file" value="${jar_name}.jar"/>
+	<property name="zip_file" value="${cmp_name}.zip"/>
+	<property name="xbean_meta" value="${basedir}/xbean"/>
+	
+	<property name="bin" value="${basedir}/bin"/>
+	<property name="namespace" value="sdp.act.buaa.edu.cn"/>
+	<property name="ns_prefix" value="http"/>
+	<property name="ns_path" value="servicecloud"/>
+	<property name="prop_file" value="samanager"/>
+	
+	
+	<property name="src" value="${basedir}/src"/>
+	
+	<property name="build_dir" value="${basedir}/build"/>
+	<property name="jar_build" value="${build_dir}/${jar_name}"/>
+	<property name="cmp_build" value="${build_dir}/${cmp_name}"/>
+	<property name="cmp_build_lib" value="${cmp_build}/lib"/>
+	<property name="target_dir" value="${build_dir}/target"/>
+	
+	
+	<target name="init_dir">
+		<tstamp>
+			<format property="build_time" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+		</tstamp>
+		
+		<mkdir dir="${build_dir}"/>
+		<mkdir dir="${jar_build}"/>
+		<mkdir dir="${cmp_build}"/>
+		<mkdir dir="${target_dir}"/>
+
+	</target>
+	
+	<target name="init" depends="init_dir" if="is_xbean_property">
+		<echo message="The build time: ${build_time}"/>
+		<mkdir dir="${cmp_build_lib}"/>
+	</target>
+	
+	<target name="jar_cmp" depends="init">
+
+
+		
+		<path id="project.classpath">
+			<fileset dir="${basedir}/lib">
+				<include name="**/*.jar"/>
+			</fileset>
+		</path>
+		
+		<jar destfile="${jar_build}/${jar_file}">
+			<fileset dir="${bin}"/>
+		</jar>
+		<move file="${jar_build}/${jar_file}" todir="${cmp_build_lib}"/>
+		<copy todir ="${cmp_build_lib}" overwrite = "true">
+							<fileset dir="${basedir}/lib">
+								<include name = "*.jar"/>
+							</fileset>
+		</copy>
+	</target>
+	
+	<target name="zip_cmp" depends="jar_cmp">
+		<delete file="${target_dir}/${zip_file}"/>
+		<mkdir dir="${cmp_build}/META-INF"/>
+		<copy todir="${cmp_build}/META-INF">
+			<fileset dir="${basedir}/META-INF-webapp">
+				<include name="*.xml"/>
+			</fileset>
+		</copy>
+		<zip basedir="${cmp_build}" destfile="${target_dir}/${zip_file}" update="false"/>
+		<delete dir="${jar_build}"></delete>
+		<delete dir="${cmp_build}"></delete>
+	</target>
+</project>

@@ -1,0 +1,66 @@
+/*
+*
+* Service4All: A Service-oriented Cloud Platform for All about Software Development
+* Copyright (C) Institute of Advanced Computing Technology, Beihang University
+* Contact: service4all@act.buaa.edu.cn
+*
+* This library is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 3.0 of the License, or any later version.
+*
+* This library is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* Lesser General Public License for more details.
+*
+* You should have received a copy of the GNU Lesser General Public
+* License along with this library; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
+* USA
+*
+*/
+package cn.edu.buaa.act.service4all.core.samanager.appliance;
+
+import java.util.Comparator;
+import cn.edu.buaa.act.service4all.core.samanager.beans.Host;
+
+public class HostComparator implements Comparator<Host> {
+
+	private String type = "axis2";
+
+
+	public HostComparator( String type ) {
+		this.type = type;
+	}
+
+
+	@Override
+	public int compare( Host pre, Host after ) {
+		int preSize;
+		if (pre.getChildAppliances().get( type ) == null) {
+			preSize = 0;
+		} else {
+			preSize = pre.getChildAppliances().get( type ).size();
+		}
+
+		int afterSize;
+		if (after.getChildAppliances().get( type ) == null) {
+
+			afterSize = 0;
+
+		} else {
+
+			afterSize = after.getChildAppliances().get( type ).size();
+
+		}
+
+		if (preSize < afterSize)
+			return -1;
+		if (preSize > afterSize)
+			return 1;
+
+		return 0;
+	}
+
+}
